@@ -1,0 +1,27 @@
+name: Github Action for Impress.js
+description: GitHub Action for screenshooting impress presentations
+author: Zitrone44
+inputs:
+  root_folder:
+    description: The folder of the presetation
+    default: ''
+  input_file:
+    description: The presentation html file inside the root_folder
+    default: ''
+  output_pdf:
+    description: The file to write the presentation pdf to
+    default: 'presentation.pdf'
+  output_mp4:
+    description: The file to write the cypress mp4 to
+    default: 'cypress.mp4'
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.root_folder }}
+    - ${{ inputs.input_file }}
+    - ${{ inputs.output_pdf }}
+    - ${{ inputs.output_mp4 }}
+branding:
+  icon: monitor
+  color: blue
